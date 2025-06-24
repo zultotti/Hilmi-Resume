@@ -12,6 +12,20 @@
             font-family: 'Inter', sans-serif;
             background-color: #f3f4f6; /* Light gray background */
             color: #374151; /* Dark gray text */
+            padding-top: 64px; /* Space for fixed navbar */
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .navbar .nav-link.active {
+            color: #ef4444; /* Red for active link */
+            font-weight: 600;
         }
         .container {
             max-width: 1000px;
@@ -52,32 +66,37 @@
             padding-left: 1em; /* Indent text after bullet */
             text-indent: -1em; /* Move bullet outside */
         }
-        .collapse-button {
-            transition: transform 0.3s ease;
+        /* Skill category hover effect */
+        .skills-grid h3 {
+            transition: transform 0.1s ease-in-out;
         }
-        .collapse-button.rotated {
-            transform: rotate(90deg);
-        }
-        .details-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
-            opacity: 0;
-        }
-        .details-content.expanded {
-            max-height: 1000px; /* Adjust as needed for content height */
-            opacity: 1;
+        .skills-grid h3:hover {
+            transform: scale(1.02);
+            color: #ef4444; /* Match accent color on hover */
         }
     </style>
 </head>
 <body class="antialiased">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar w-full p-4 flex justify-center items-center">
+        <div class="flex flex-wrap justify-center gap-4 text-sm sm:text-base">
+            <a href="#professional-summary" class="nav-link text-gray-700 hover:text-red-600 font-medium transition duration-150 ease-in-out">Summary</a>
+            <a href="#skills" class="nav-link text-gray-700 hover:text-red-600 font-medium transition duration-150 ease-in-out">Skills</a>
+            <a href="#certifications" class="nav-link text-gray-700 hover:text-red-600 font-medium transition duration-150 ease-in-out">Certifications</a>
+            <a href="#working-experience" class="nav-link text-gray-700 hover:text-red-600 font-medium transition duration-150 ease-in-out">Experience</a>
+            <a href="#educational-background" class="nav-link text-gray-700 hover:text-red-600 font-medium transition duration-150 ease-in-out">Education</a>
+            <a href="#references" class="nav-link text-gray-700 hover:text-red-600 font-medium transition duration-150 ease-in-out">References</a>
+        </div>
+    </nav>
+
     <div class="min-h-screen flex items-center justify-center py-10 px-4 sm:px-6 lg:px-8">
         <div class="container bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-2xl space-y-8">
 
             <!-- Header Section -->
             <header class="text-center pb-6 border-b border-gray-200">
-                <!-- Updated image styling for better centering -->
-                <img src="https://i.imgur.com/5kDLJWl.png" alt="Muhammad Zulhilmi B. Roslan Profile Picture" class="w-48 h-48 rounded-full mx-auto mb-4 border-4 border-red-400 shadow-md" style="object-fit: cover; object-position: 50% 30%;">
+                <!-- Updated image URL and object-position for balancing -->
+                <img src="https://i.imgur.com/5kDLJWl.png" alt="Muhammad Zulhilmi B. Roslan Profile Picture" class="w-48 h-48 rounded-full mx-auto mb-4 border-4 border-red-400 shadow-md" style="object-fit: cover; object-position: 50% 40%;">
                 <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight mb-2">
                     Muhammad Zulhilmi B. Roslan
                 </h1>
@@ -96,7 +115,7 @@
             </header>
 
             <!-- Professional Summary Section -->
-            <section class="py-6 border-b border-gray-200">
+            <section id="professional-summary" class="py-6 border-b border-gray-200">
                 <h2 class="section-title text-2xl sm:text-3xl font-bold text-gray-800">Professional Summary</h2>
                 <p class="text-gray-700 leading-relaxed text-base sm:text-lg">
                     Highly motivated and results-oriented IT professional with over a decade of experience in IT administration, project management, and digital marketing. Proven ability to lead IT infrastructure projects, implement robust digital solutions, and drive significant improvements in system efficiency and online presence. Seeking a challenging IT leadership role where I can leverage my expertise in networking, system administration, digital strategy, and team leadership to enhance organizational capabilities and contribute to strategic growth.
@@ -104,9 +123,9 @@
             </section>
 
             <!-- Skills Section -->
-            <section class="py-6 border-b border-gray-200">
+            <section id="skills" class="py-6 border-b border-gray-200">
                 <h2 class="section-title text-2xl sm:text-3xl font-bold text-gray-800">Skills</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-gray-700">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-gray-700 skills-grid">
                     <div>
                         <h3 class="font-semibold text-lg text-gray-800 mb-2">Operating Systems</h3>
                         <ul class="list-disc-custom ml-5 space-y-1 text-sm">
@@ -164,20 +183,30 @@
                 </div>
             </section>
 
-            <!-- Working Experience Section -->
-            <section class="py-6 border-b border-gray-200">
-                <h2 class="section-title text-2xl sm:text-3xl font-bold text-gray-800">Working Experience</h2>
+            <!-- Certifications Section -->
+            <section id="certifications" class="py-6 border-b border-gray-200">
+                <h2 class="section-title text-2xl sm:text-3xl font-bold text-gray-800">Certifications</h2>
+                <div class="job-card p-6">
+                    <ul class="list-disc-custom ml-5 space-y-2 text-gray-700 text-base">
+                        <li>Google Ads Certificate</li>
+                        <li>TP-Link Omada Certificate</li>
+                        <li>Infotech HR Management System Certificate</li>
+                        <li>Google SEO Certificate</li>
+                        <li>Facebook Ads Certificate</li>
+                        <li>TikTok Ads Certificate</li>
+                    </ul>
+                </div>
+            </section>
 
-                <!-- G-Mart Corporation Sdn Bhd -->
-                <div class="job-card p-6 mb-8">
-                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Business Development Executive</h3>
-                    <p class="text-lg text-gray-700 mb-1">G-Mart Corporation Sdn Bhd</p>
-                    <p class="text-sm text-gray-500 mb-4">Apr 2018 – Current | Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur</p>
-                    <button class="toggle-details-btn flex items-center text-red-600 hover:text-red-800 font-medium mb-2">
-                        View Details
-                        <svg class="w-4 h-4 ml-2 collapse-button" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </button>
-                    <div class="details-content">
+            <!-- Working Experience Section -->
+            <section id="working-experience" class="py-6 border-b border-gray-200">
+                <h2 class="section-title text-2xl sm:text-3xl font-bold text-gray-800">Working Experience</h2>
+                <div class="job-card p-6">
+                    <!-- G-Mart Corporation Sdn Bhd -->
+                    <div class="mb-8">
+                        <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Business Development Executive</h3>
+                        <p class="text-lg text-gray-700 mb-1">G-Mart Corporation Sdn Bhd</p>
+                        <p class="text-sm text-gray-500 mb-4">Apr 2018 – Current | Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur</p>
                         <ul class="list-disc-custom ml-5 space-y-2 text-gray-700 text-base">
                             <li>Spearheaded digital marketing and IT implementation initiatives, significantly expanding business development and sales experience.</li>
                             <li>Led the implementation of SEO and Google Ads strategies for the G-Mart website, boosting organic Google traffic from below 10,000 to over 200,000 per month.</li>
@@ -194,18 +223,12 @@
                             <li>Responsible for recruiting dealers to bid and companies to dispose of assets.</li>
                         </ul>
                     </div>
-                </div>
 
-                <!-- Artisan Elite Sdn Bhd -->
-                <div class="job-card p-6 mb-8">
-                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Project Manager and Digital Marketing</h3>
-                    <p class="text-lg text-gray-700 mb-1">Artisan Elite Sdn Bhd (Electronic Cigarettes Maker and Distribution)</p>
-                    <p class="text-sm text-gray-500 mb-4">Oct 2016 – Jan 2018</p>
-                    <button class="toggle-details-btn flex items-center text-red-600 hover:text-red-800 font-medium mb-2">
-                        View Details
-                        <svg class="w-4 h-4 ml-2 collapse-button" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </button>
-                    <div class="details-content">
+                    <!-- Artisan Elite Sdn Bhd -->
+                    <div class="mb-8">
+                        <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Project Manager and Digital Marketing</h3>
+                        <p class="text-lg text-gray-700 mb-1">Artisan Elite Sdn Bhd (Electronic Cigarettes Maker and Distribution)</p>
+                        <p class="text-sm text-gray-500 mb-4">Oct 2016 – Jan 2018</p>
                         <ul class="list-disc-custom ml-5 space-y-2 text-gray-700 text-base">
                             <li>Oversaw the maintenance and operation of the company's Website and E-Commerce platforms.</li>
                             <li>Implemented and managed CRM systems, alongside setting up integral management and accounting software.</li>
@@ -217,20 +240,14 @@
                             <li>Coordinated all implementation tasks involving third-party vendors and provided expert consultation to customers.</li>
                         </ul>
                     </div>
-                </div>
 
-                <!-- Scicom Bhd, KLCC -->
-                <div class="job-card p-6 mb-8">
-                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Technical Team Support (Lenovo)</h3>
-                    <p class="text-lg text-gray-700 mb-1">Scicom Bhd, KLCC (Service Conglomerates)</p>
-                    <p class="text-sm text-gray-500 mb-4">Feb 2016 – Aug 2016</p>
-                    <button class="toggle-details-btn flex items-center text-red-600 hover:text-red-800 font-medium mb-2">
-                        View Details
-                        <svg class="w-4 h-4 ml-2 collapse-button" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </button>
-                    <div class="details-content">
+                    <!-- Scicom Bhd, KLCC -->
+                    <div class="mb-8">
+                        <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Technical Team Support (Lenovo)</h3>
+                        <p class="text-lg text-gray-700 mb-1">Scicom Bhd, KLCC (Service Conglomerates)</p>
+                        <p class="text-sm text-gray-500 mb-4">Feb 2016 – Aug 2016</p>
                         <ul class="list-disc-custom ml-5 space-y-2 text-gray-700 text-base">
-                            <li>Led a team providing telephone and online support to customers experiencing technical issues.</li>
+                            <li>Provided telephone and online support as part of a technical team to customers experiencing technical issues.</li>
                             <li>Provided quality troubleshooting with patient step-by-step instructions to resolve problems.</li>
                             <li>Monitored technical team calls to ensure maintenance of technical skills and good customer service.</li>
                             <li>Tracked and logged all calls for each shift.</li>
@@ -238,18 +255,12 @@
                             <li>Facilitated weekly team meetings and involved staff in planning and decision making.</li>
                         </ul>
                     </div>
-                </div>
 
-                <!-- Reapfield Academy, Damansara Perdana -->
-                <div class="job-card p-6 mb-8">
-                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">IT Admin / Project Manager</h3>
-                    <p class="text-lg text-gray-700 mb-1">Reapfield Academy, Damansara Perdana</p>
-                    <p class="text-sm text-gray-500 mb-4">May 2013 – Feb 2016</p>
-                    <button class="toggle-details-btn flex items-center text-red-600 hover:text-red-800 font-medium mb-2">
-                        View Details
-                        <svg class="w-4 h-4 ml-2 collapse-button" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </button>
-                    <div class="details-content">
+                    <!-- Reapfield Academy, Damansara Perdana -->
+                    <div class="mb-8">
+                        <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">IT Admin / Project Manager</h3>
+                        <p class="text-lg text-gray-700 mb-1">Reapfield Academy, Damansara Perdana</p>
+                        <p class="text-sm text-gray-500 mb-4">May 2013 – Feb 2016</p>
                         <ul class="list-disc-custom ml-5 space-y-2 text-gray-700 text-base">
                             <li>Responsible for effective provisioning, installation/configuration, operation, and maintenance of systems hardware and software and related infrastructure.</li>
                             <li>Conducted extensive technical research and development to enable continuing innovation within the infrastructure.</li>
@@ -258,7 +269,7 @@
                             <li>Configured systems such as supports GIS infrastructure applications or Asset Management applications.</li>
                             <li>Developed and maintained installation and configuration procedures.</li>
                             <li>Contributed to and maintained system standards.</li>
-                            <li>Researched and recommended innovative, and where possible automated approaches for system administration tasks, identifying approaches that leveraged resources and provided economies of scale.</li>
+                            <li>Researched and recommended innovative, and where possible automated approaches for system administration tasks, identifying approaches that leveraged resources and provide economies of scale.</li>
                             <li>Maintained and Updated content (CMS) for the Reapfield.com and Reapfieldacademy.my website.</li>
                             <li>Performed daily system monitoring, verifying the integrity and availability of all hardware, server resources, systems and key processes, reviewing system and application logs, and verifying completion of scheduled jobs such as backups.</li>
                             <li>Performs regular security monitoring to identify any possible intrusions.</li>
@@ -269,18 +280,12 @@
                             <li>Performed periodic performance reporting to support capacity planning.</li>
                         </ul>
                     </div>
-                </div>
 
-                <!-- Osiris Solution Sdn Bhd -->
-                <div class="job-card p-6 mb-8">
-                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">IT Support Engineer</h3>
-                    <p class="text-lg text-gray-700 mb-1">Osiris Solution Sdn Bhd, Klang Valley</p>
-                    <p class="text-sm text-gray-500 mb-4">Nov 2012 – May 2013 <span class="italic text-gray-400">(Reason for Leaving: Received a Better Offer As IT Admin at Reapfield Damansara)</span></p>
-                    <button class="toggle-details-btn flex items-center text-red-600 hover:text-red-800 font-medium mb-2">
-                        View Details
-                        <svg class="w-4 h-4 ml-2 collapse-button" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </button>
-                    <div class="details-content">
+                    <!-- Osiris Solution Sdn Bhd -->
+                    <div class="mb-8">
+                        <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">IT Support Engineer</h3>
+                        <p class="text-lg text-gray-700 mb-1">Osiris Solution Sdn Bhd, Klang Valley</p>
+                        <p class="text-sm text-gray-500 mb-4">Nov 2012 – May 2013 <span class="italic text-gray-400">(Reason for Leaving: Received a Better Offer As IT Admin at Reapfield Damansara)</span></p>
                         <ul class="list-disc-custom ml-5 space-y-2 text-gray-700 text-base">
                             <li>Configured Email server and File Server.</li>
                             <li>Gained practical experience in Website hosting and domain management.</li>
@@ -297,22 +302,16 @@
                             <li>Performs daily system monitoring, verifying the integrity and availability of all hardware, server resources, systems and key processes, reviewing system and application logs, and verifying completion of scheduled backups.</li>
                             <li>Applied OS patches and upgrades on a regular basis, and upgraded administrative tools and utilities.</li>
                             <li>Configured / added new services as necessary.</li>
-                            <li>Performed ongoing performance tuning, hardware upgrades, and resource optimization as required.</li>
+                            <li>Performs ongoing performance tuning, hardware upgrades, and resource optimization as required.</li>
                             <li>Configured CPU, memory, and disk partitions as required.</li>
                         </ul>
                     </div>
-                </div>
 
-                <!-- Advancenet Technologies Sdn Bhd -->
-                <div class="job-card p-6 mb-8">
-                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Technical Support Engineer</h3>
-                    <p class="text-lg text-gray-700 mb-1">Advancenet Technologies Sdn Bhd, Puchong</p>
-                    <p class="text-sm text-gray-500 mb-4">Apr 2011 – Sept 2012 <span class="italic text-gray-400">(Reason for Leaving: 6 Month Contract for TM Products Warranties)</span></p>
-                    <button class="toggle-details-btn flex items-center text-red-600 hover:text-red-800 font-medium mb-2">
-                        View Details
-                        <svg class="w-4 h-4 ml-2 collapse-button" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </button>
-                    <div class="details-content">
+                    <!-- Advancenet Technologies Sdn Bhd -->
+                    <div class="mb-8">
+                        <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Technical Support Engineer</h3>
+                        <p class="text-lg text-gray-700 mb-1">Advancenet Technologies Sdn Bhd, Puchong</p>
+                        <p class="text-sm text-gray-500 mb-4">Apr 2011 – Sept 2012 <span class="italic text-gray-400">(Reason for Leaving: 6 Month Contract for TM Products Warranties)</span></p>
                         <ul class="list-disc-custom ml-5 space-y-2 text-gray-700 text-base">
                             <li>Supported users experiencing problems with D-link and TP-link products.</li>
                             <li>Performed warranty testing for D-link, TP-link, Planet, and Meraki products.</li>
@@ -321,18 +320,12 @@
                             <li>Conducted site surveys to install Access Points, determine switch placement, and performed regular maintenance for customers.</li>
                         </ul>
                     </div>
-                </div>
 
-                <!-- NetSynergy Solution -->
-                <div class="job-card p-6 mb-8">
-                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Jr. Customer Support Engineer</h3>
-                    <p class="text-lg text-gray-700 mb-1">NetSynergy Solution, Sri Rampai Business Park</p>
-                    <p class="text-sm text-gray-500 mb-4">Oct 2010 – Mar 2011 <span class="italic text-gray-400">(Reason for Leaving: 5 Month Contract for migration)</span></p>
-                    <button class="toggle-details-btn flex items-center text-red-600 hover:text-red-800 font-medium mb-2">
-                        View Details
-                        <svg class="w-4 h-4 ml-2 collapse-button" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </button>
-                    <div class="details-content">
+                    <!-- NetSynergy Solution -->
+                    <div class="mb-8">
+                        <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Jr. Customer Support Engineer</h3>
+                        <p class="text-lg text-gray-700 mb-1">NetSynergy Solution, Sri Rampai Business Park</p>
+                        <p class="text-sm text-gray-500 mb-4">Oct 2010 – Mar 2011 <span class="italic text-gray-400">(Reason for Leaving: 5 Month Contract for migration)</span></p>
                         <ul class="list-disc-custom ml-5 space-y-2 text-gray-700 text-base">
                             <li>Provided direct help and support to customers experiencing problems with their computers and notebooks, including hardware changes.</li>
                             <li>Repaired and troubleshot systems for a lawyers' company in Klang Valley area for three months.</li>
@@ -352,27 +345,28 @@
             </section>
 
             <!-- Educational Background Section -->
-            <section class="py-6 border-b border-gray-200">
+            <section id="educational-background" class="py-6 border-b border-gray-200">
                 <h2 class="section-title text-2xl sm:text-3xl font-bold text-gray-800">Educational Background</h2>
-
-                <div class="job-card p-6 mb-6">
-                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Diploma in Electrical And Electronic Engineering</h3>
-                    <p class="text-lg text-gray-700 mb-1">Technology Park Malaysia Academy</p>
-                    <p class="text-sm text-gray-500">Graduation: October 2010 | Grade: Pass</p>
-                </div>
-
                 <div class="job-card p-6">
-                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Sijil Pelajaran Malaysia (SPM)</h3>
-                    <p class="text-lg text-gray-700 mb-1">Sekolah Menengah Kebangsaan USJ 23</p>
-                    <p class="text-sm text-gray-500">Major: Economy | Graduation: December 2006 | Grade: Pass</p>
+                    <div class="mb-6">
+                        <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Diploma in Electrical And Electronic Engineering</h3>
+                        <p class="text-lg text-gray-700 mb-1">Technology Park Malaysia Academy</p>
+                        <p class="text-sm text-gray-500">Graduation: October 2010 | Grade: Pass</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Sijil Pelajaran Malaysia (SPM)</h3>
+                        <p class="text-lg text-gray-700 mb-1">Sekolah Menengah Kebangsaan USJ 23</p>
+                        <p class="text-sm text-gray-500">Major: Economy | Graduation: December 2006 | Grade: Pass</p>
+                    </div>
                 </div>
             </section>
 
             <!-- References Section -->
-            <section class="py-6 text-center">
+            <section id="references" class="py-6 text-center">
                 <h2 class="section-title text-2xl sm:text-3xl font-bold text-gray-800 mx-auto w-fit">References</h2>
                 <p class="text-gray-700 text-base sm:text-lg mb-6">References available upon request.</p>
-                <a href="mailto:zultotti10@gmail.com" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-500 transition ease-in-out duration-150">
+                <a href="mailto:zultotti10@gmail.com" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition ease-in-out duration-150">
                     <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
                     Send Email Request
                 </a>
@@ -383,27 +377,49 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const toggleButtons = document.querySelectorAll('.toggle-details-btn');
+            // --- Active Navigation Link Highlighting ---
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navbarHeight = document.querySelector('.navbar').offsetHeight; // Get navbar height once
 
-            toggleButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const detailsContent = button.nextElementSibling; // The div containing the ul
-                    const arrowIcon = button.querySelector('.collapse-button');
+            function highlightNavLink() {
+                let currentActive = '';
+                sections.forEach(section => {
+                    // Adjust sectionTop to account for fixed navbar
+                    const sectionTop = section.offsetTop - navbarHeight - 1;
+                    const sectionHeight = section.clientHeight;
+                    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                        currentActive = section.getAttribute('id');
+                    }
+                });
 
-                    if (detailsContent.classList.contains('expanded')) {
-                        detailsContent.classList.remove('expanded');
-                        arrowIcon.classList.remove('rotated');
-                        // Change text back to "View Details" (assuming the text node is the first child)
-                        if (button.childNodes[0].nodeType === 3) { // Node.TEXT_NODE
-                            button.childNodes[0].nodeValue = 'View Details';
-                        }
-                    } else {
-                        detailsContent.classList.add('expanded');
-                        arrowIcon.classList.add('rotated');
-                        // Change text to "Hide Details"
-                        if (button.childNodes[0].nodeType === 3) {
-                            button.childNodes[0].nodeValue = 'Hide Details';
-                        }
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === currentActive) { // Compare ID directly
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // Initial highlight on load
+            highlightNavLink();
+            // Highlight on scroll
+            window.addEventListener('scroll', highlightNavLink);
+
+            // Navigation link smooth scroll
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1); // Remove '#'
+                    const targetSection = document.getElementById(targetId);
+
+                    if (targetSection) {
+                        const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - navbarHeight;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
                     }
                 });
             });
